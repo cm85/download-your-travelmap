@@ -1,5 +1,5 @@
 /*global require */
-(function () {
+(function (require) {
     'use strict';
     var gulp = require('gulp'),
         lambda = require('gulp-awslambda'),
@@ -13,17 +13,30 @@
                         Bucket: config.s3.bucketName
                     }
                 }),
-                headers = {
-                    'Cache-Control': 'max-age=3600, no-transform, public, must-revalidate',
+                headerForever = {
+                    'Cache-Control': 'max-age=31536000, no-transform, public, must-revalidate',
                     'Content-Encoding': 'gzip'
+
+                },
+                headerIndex = {
+                    'Cache-Control': 'max-age=3600, no-transform, public, must-revalidate',
+                    'Content-Encoding': 'gzip',
+                    'Content-Type': 'text/html; charset=UTF-8'
+                   // 'x-frame-options': 'SAMEORIGIN'
                 };
+
             gulp.src('./backend/**/*')
                 .pipe(zip('archive.zip'))
                 .pipe(lambda(config.lambda, config));
 
-            return gulp.src(['./dist/' + config.filename, './app/robots.txt'])
+            gulp.src(['./app/robots.txt', './app/favicon.ico'])
                 .pipe(awspublish.gzip({}))
-                .pipe(publisher.publish(headers))
+                .pipe(publisher.publish(headerForever))
+                .pipe(awspublish.reporter({}));
+
+            return gulp.src(['./dist/' + config.filename])
+                .pipe(awspublish.gzip({}))
+                .pipe(publisher.publish(headerIndex))
                 .pipe(awspublish.reporter({}));
         };
 
@@ -37,4 +50,4 @@
         config = config.aws.stage;
         deploy(config);
     });
-}());
+}(require));

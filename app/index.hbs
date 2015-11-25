@@ -4,9 +4,6 @@
     <meta charset="utf-8"/>
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;url=http://browsehappy.com/"/>
-    <style>* {
-        display: none;
-    }</style>
     <![endif]-->
     <link rel="dns-prefetch" href="//www.google-analytics.com"/>
     <link rel="dns-prefetch" href="//ajax.googleapis.com"/>
@@ -14,11 +11,11 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com"/>
     <link rel="dns-prefetch" href="//{{awsApiGatewayHostname}}"/>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta id="theme-color" name="theme-color" content="#4527A0">
     <meta name="microid" content="mailto:http:sha1:85a36cacd2230575172266f765d9dfba059906ec">
     <style>{{{stylesheet}}}</style>
-
-
     <meta name="Description"
           CONTENT="Download your TripAdvisor Travelmap. You only need your Profile URL, one click and a second waiting time.">
     <link rel="author" href="https://plus.google.com/+ChristianHaller1982"/>
@@ -31,7 +28,8 @@
     </header>
 
     <p class="splash-subhead example">
-        Just enter your <a href="http://www.tripadvisor.com/MemberProfile"><span class="icon icon-link">TripAdvisor</span>
+        Just enter your <a href="http://www.tripadvisor.com/MemberProfile"><span
+            class="icon icon-link">TripAdvisor</span>
     </a> Profile URL, press submit and wait for ~ 5 seconds.<span
             class="example__hint">e. g. http://www.tripadvisor.com/members/christianhaller</span></p>
 
@@ -78,12 +76,15 @@
 
     <a class="icon icon-octocat" href="https://github.com/christianhaller/download-your-travelmap">github</a>
     {{#if buildId}}
-        <a href="https://travis-ci.org/christianhaller/download-your-travelmap/builds/{{buildId}}" class="icon-travisci icon">build: {{buildNumber}}</a>
+        <a href="https://travis-ci.org/christianhaller/download-your-travelmap/builds/{{buildId}}"
+           class="icon-travisci icon">build: #{{buildNumber}}</a>
     {{else}}
         <span class="icon-travisci icon">build: 0</span>
     {{/if}}
 </footer>
 <script>{{{script}}}</script>
-<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js" async></script>
+<noscript>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet" property="stylesheet" media="all">
+</noscript>
 </body>
 </html>
