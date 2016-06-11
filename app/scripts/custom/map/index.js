@@ -1,8 +1,9 @@
-/* global require, module, window, jQuery */
-var config = require('config');
-require('vendor/jquery-jvectormap-1.2.2.min');
-require('vendor/jquery-jvectormap-world-mill-en');
-module.exports = (function (window, $, config) {
+/*global require, module, window, jQuery, document */
+var config = require('../config'),
+    data = require('json!../../../../data.json'),
+    Datamap = require('datamaps');
+
+module.exports = (function (window, document, $, config, Datamap) {
     'use strict';
     var setUsername = function ($ctx, username) {
             $ctx.find('.js-username').text(username);
@@ -12,6 +13,7 @@ module.exports = (function (window, $, config) {
 
         },
         hideMap = function ($ctx) {
+
             $ctx.removeClass(config.classNames.block);
             $ctx.addClass(config.classNames.isHidden);
         },
@@ -52,25 +54,25 @@ module.exports = (function (window, $, config) {
             });
             return regions;
         },
-        /*countCountries = function (list) {
-            var coutryList = [];
-            $.each(list, function (index, value) {
-                if ($.inArray(value.country, coutryList) === -1) {
-                    if ($.inArray('been', value.flags) !== -1) {
-                        coutryList.push(value.country);
-                    }
-                }
-            });
-            return coutryList.length;
-        },*/
+    /*countCountries = function (list) {
+     var coutryList = [];
+     $.each(list, function (index, value) {
+     if ($.inArray(value.country, coutryList) === -1) {
+     if ($.inArray('been', value.flags) !== -1) {
+     coutryList.push(value.country);
+     }
+     }
+     });
+     return coutryList.length;
+     },*/
         pushState = function (url) {
             var newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?url=' + url;
             if (window.history && window.history.pushState) {
                 window.history.pushState('', '', newUrl);
             }
         },
-        setAvatar = function(src){
-            $('.js-avatar').attr('src',src).removeClass(config.classNames.fadedout)
+        setAvatar = function (src) {
+            $('.js-avatar').attr('src', src).removeClass(config.classNames.fadedout)
 
         },
         setStats = function ($ctx, stats) {
@@ -83,32 +85,38 @@ module.exports = (function (window, $, config) {
             $ctx.find('.js-download-bar__button__kml').attr('href', kml);
         };
     return {
-        hideMap : hideMap,
+        hideMap: hideMap,
         showResponse: function (response) {
-            var $ctx = $('.js-map'),
-                $map = $ctx.find('#jvectormap'),
-                $thisIs = $ctx.find('.js-this-is__city'),
-                jvectormapConfig = config.jvectormap;
-            showMap($ctx);
 
-            if (response.data.lang === 'en') {
-                jvectormapConfig.series.regions[0].values = getRegions(response.data.places);
-            }
-            jvectormapConfig.markers = getMarker(response.data.places, config);
-            jvectormapConfig.onViewportChange = function (event, number) {
-                $map.attr('data-zoomlevel', Math.round(number));
-            };
-            jvectormapConfig.onMarkerLabelShow = function (event, label) {
-                $thisIs.text($(label).text());
-            };
-            $map.empty().vectorMap(jvectormapConfig);
 
-            setCsvDownloadButton($ctx, response.data.csv);
-            setKmlDownloadButton($ctx, response.data.kml);
-            setAvatar(response.data.avatar);
-            setUsername($ctx, response.data.username);
-            pushState(response.url);
-            setStats($ctx, response.data.stats);
         }
     };
-})(window, jQuery, config);
+}(window, document, jQuery, config, Datamap));
+
+var datamap = new Datamap({element: $('.datamap')[0],
+    geographyConfig: {
+        popupOnHover: false,
+        hideAntarctica: false,
+        highlightOnHover: false
+    },
+    responsive: true,
+
+    fills: {
+        defaultFill: '#ABDDA4',
+        'been': '#000000',
+        authorHasTraveledTo: '#fa0fa0'
+    }});
+console.log(data.data.places[0]);
+datamap.bubbles(data.data.places.map(function (el) {
+    // console.log()
+    return {
+        'name': el.name,
+     //   fillKey: el.been,
+        'radius': 4,
+
+        'latitude': el.lat,
+        'longitude': el.lng
+
+    };
+
+}));

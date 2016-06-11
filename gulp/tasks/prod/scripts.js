@@ -5,19 +5,12 @@
         gutil = require('gulp-util'),
         webpack = require('webpack'),
         rename = require('gulp-rename'),
-        bower = require('gulp-bower'),
         webpackConfig = require('../../../webpack.config.js');
 
 
 
-    gulp.task('bower', function () {
-        return bower({
-            'force': true
-        });
-    });
 
-
-    gulp.task('webpack', ['bower'], function (callback) {
+    gulp.task('webpack', function (callback) {
         // run webpack
         webpack(webpackConfig, function (err, stats) {
             if (err) {

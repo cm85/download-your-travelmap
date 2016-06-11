@@ -12,7 +12,7 @@
         sass = require('gulp-sass');
 
     gulp.task('styles', ['svg'], function () {
-        return gulp.src(config.styles)
+        return gulp.src('./app/styles/main.scss')
             // 1 . SASS
             /*.pipe(sassLint({
                 'config': '.scss-lint.yml'

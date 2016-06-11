@@ -3,6 +3,6 @@
     'use strict';
     var gulp = require('gulp');
 
-    gulp.task('build', ['scripts', 'styles', 'markup']);
+    gulp.task('build', ['scripts', 'markup']);
 }(require));
 

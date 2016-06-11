@@ -1,7 +1,7 @@
-/* global module, require, window, jQuery */
+/*global module, require, window, jQuery */
 
 var NProgress = require('nprogress'),
-    config = require('config'),
+    config = require('../config'),
     notification = require('../notification'),
     tracking = require('../tracking'),
     map = require('../map');
@@ -82,4 +82,4 @@ module.exports = (function (window, $, NProgress, config) {
         $ctx.trigger('auto');
     }
 
-})(window, jQuery, NProgress, config);
+}(window, jQuery, NProgress, config));

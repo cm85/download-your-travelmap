@@ -1,7 +1,7 @@
-/* global module, __dirname, require */
+/*global module, __dirname, require */
 var path = require('path'),
     webpack = require('webpack');
-
+console.log(__dirname);
 module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
@@ -18,11 +18,14 @@ module.exports = {
 
     entry: './app/scripts/custom/main.js',
     resolve: {
+
+        moduleDirectories : [ '../../node_modules' ],
         alias: {
-            jquery: path.join(__dirname + '/bower_components/jquery/dist/jquery.js'),
-            nprogress: path.join(__dirname + '/bower_components/nprogress/nprogress.js'),
-            vendor: path.join(__dirname + '/app/scripts/vendor'),
-            config: path.join(__dirname + '/app/scripts/custom/config.js')
+
+            jquery: 'jquery/dist/jquery',
+            d3: 'd3/d3',
+            datamaps: 'datamaps/dist/datamaps.world.js',
+            nprogress: 'nprogress/nprogress'
         }
     },
     output: {
