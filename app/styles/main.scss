@@ -1,5 +1,9 @@
+@import 'normalize.css';
+
+
 body {
     line-height: 1.5;
+
 }
 
 * {
@@ -9,7 +13,7 @@ body {
 }
 
 .datamap {
-    padding-bottom: 56.25%;
+
     position: relative;
 
 }
@@ -18,7 +22,7 @@ body {
     position: absolute;
     left: 50%;
     padding: 20px;
-    min-width:300px;
+    min-width: 300px;
     top: 50%;
     border: 1px solid transparent;
     background: red;
@@ -41,19 +45,22 @@ body {
     transition: all 0.5s ease;
     z-index: 1;
 }
+
 .form:hover {
 
     border: 1px inset #333;
 
 }
+
 .off {
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
     /* left: 0px; */
     border: 1px inset #333;
     top: 0;
     font-size: .7em;
     padding: 2px;
 }
+
 .fieldset {
     display: table-row;
     border: none;
@@ -62,7 +69,7 @@ body {
 .url,
 .submit {
     display: table-cell;
-    width:79%;
+    width: 79%;
     padding: 10px 15px;
     font-size: 1.1em;
     border-radius: 0;
@@ -74,7 +81,7 @@ body {
 }
 
 .submit {
-    width:21%;
+    width: 21%;
     background-color: #ffff00;
     -webkit-appearance: none;
     display: inline;
@@ -86,6 +93,32 @@ body {
      */
     border: 2px inset black;
 }
+
 .submit::-moz-focus-inner {
     border: 1px;
+}
+
+.footer {
+    .footer-wrapper {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    background: red;
+
+    .footer-info {
+        float: left;
+    }
+}
+
+.download {
+    float: right;
+    list-style-type: none;
+    li {
+        float: left;
+    }
 }

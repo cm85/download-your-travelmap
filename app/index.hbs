@@ -28,11 +28,13 @@
   <form class="form">
    <fieldset class="fieldset">
 
-      <input placeholder="http://www.tripadvisor.com/profile/..." class="url" type="text" required/><input class="submit" type="submit" value="submit"/>
+      <input placeholder="http://www.tripadvisor.com/profile/..." class="url" type="text" required/><button class="submit" type="submit"><span>submit</span></button>
    </fieldset>
   </form>
 </div>
 <footer class="footer">
+<div class="footer-wrapper">
+  <div class="footer-info">
   <a href="http://www.tripadvisor.com/ShowTopic-g1-i12105-k4907156-o20-How_can_I_download_my_travel_map_pins_list-TripAdvisor_Support.html">About</a>
 
   <a class="icon icon-octocat" href="https://github.com/christianhaller/download-your-travelmap">github</a>
@@ -42,6 +44,14 @@
     {{else}}
       <span class="icon-travisci icon">build: 0</span>
     {{/if}}
+  </div>
+
+    <ul class="download">
+      <li><a href="">csv</a></li>
+      <li><a href="">kml</a></li>
+      <li><a href="">donate</a></li>
+    </ul>
+</div>
 </footer>
 
 <script>
