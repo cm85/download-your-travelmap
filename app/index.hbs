@@ -70,11 +70,15 @@
   ga('send', 'pageview');
 </script>
 <script>{{{script}}}</script>
-<script>$(document).ready(function(){
-    $('.submit').on('click touchend',function(e){
-        $(this).closest('.form').addClass('off');
-      e.preventDefault();
+<script>
+    (function($) {
+    jQuery(document).ready(function () {
+        $('.submit').on('click touchend', function (e) {
+            $(this).closest('.form').addClass('off');
+            e.preventDefault();
+        });
     });
-});</script>
+})(jQuery);
+</script>
 </body>
 </html>
