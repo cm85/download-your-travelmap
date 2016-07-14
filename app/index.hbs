@@ -15,7 +15,9 @@
   <meta id="theme-color" name="theme-color" content="#4527A0"/>
   <meta name="microid" content="mailto:http:sha1:85a36cacd2230575172266f765d9dfba059906ec"/>
   <style>
-    {{{stylesheet}}}
+
+          {{{stylesheet}}}
+
   </style>
   <meta name="Description"
         CONTENT="Download your TripAdvisor Travelmap. You only need your Profile URL, one click and a second waiting time."/>
@@ -24,35 +26,49 @@
 </head>
 
 <body>
-<div class="datamap">
-  <form class="form">
-   <fieldset class="fieldset">
+<div class="sixteen-nine">
 
-      <input placeholder="http://www.tripadvisor.com/profile/..." class="url" type="text" required/><button class="submit" type="submit"><span>submit</span></button>
-   </fieldset>
-  </form>
-</div>
-<footer class="footer">
-<div class="footer-wrapper">
-  <div class="footer-info">
-  <a href="http://www.tripadvisor.com/ShowTopic-g1-i12105-k4907156-o20-How_can_I_download_my_travel_map_pins_list-TripAdvisor_Support.html">About</a>
 
-  <a class="icon icon-octocat" href="https://github.com/christianhaller/download-your-travelmap">github</a>
-    {{#if buildId}}
-      <a href="https://travis-ci.org/christianhaller/download-your-travelmap/builds/{{buildId}}"
-         class="icon-travisci icon">build: #{{buildNumber}}</a>
-    {{else}}
-      <span class="icon-travisci icon">build: 0</span>
-    {{/if}}
+
+  <div class="content">
+    <div class="datamap"></div>
+    <form class="form">
+      <fieldset class="fieldset">
+
+        <!--<button class="submit" type="submit"><span>submit</span></button>
+        <label class="label">
+          <input placeholder="http://www.tripadvisor.com/profile/..." class="url" type="text" required/>
+        </label>-->
+        <input type="submit" value="submit" class="submit" />
+        <label class="label">
+          <input placeholder="http://www.tripadvisor.com/profile/..." type="text" name="url" class="url" required />
+        </label>
+      </fieldset>
+    </form>
+
   </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-info">
+        <a href="http://www.tripadvisor.com/ShowTopic-g1-i12105-k4907156-o20-How_can_I_download_my_travel_map_pins_list-TripAdvisor_Support.html">About</a>
 
-    <ul class="download">
-      <li><a href="">csv</a></li>
-      <li><a href="">kml</a></li>
-      <li><a href="">donate</a></li>
-    </ul>
-</div>
-</footer>
+        <a class="icon icon-octocat" href="https://github.com/christianhaller/download-your-travelmap">github</a>
+          {{#if buildId}}
+            <a href="https://travis-ci.org/christianhaller/download-your-travelmap/builds/{{buildId}}"
+               class="icon-travisci icon">build: #{{buildNumber}}</a>
+          {{else}}
+            <span class="icon-travisci icon">build: 0</span>
+          {{/if}}
+      </div>
+
+      <ul class="download">
+        <li><a href="">csv</a></li>
+        <li><a href="">kml</a></li>
+        <li><a href="">donate</a></li>
+      </ul>
+    </div>
+  </footer>
 
 <script>
   (function (i, s, o, g, r, a, m) {
@@ -70,11 +86,11 @@
   ga('send', 'pageview');
 </script>
 <script>{{{script}}}</script>
-<script>$(document).ready(function(){
-    $('.submit').on('click touchend',function(e){
-        $(this).closest('.form').addClass('off');
-      e.preventDefault();
-    });
+<script>$(document).ready(function () {
+  $('.submit').on('click touchend', function (e) {
+    $(this).closest('.form').addClass('off');
+    e.preventDefault();
+  });
 });</script>
 </body>
 </html>

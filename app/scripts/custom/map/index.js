@@ -94,10 +94,18 @@ module.exports = (function (window, document, $, config, Datamap) {
 }(window, document, jQuery, config, Datamap));
 
 var datamap = new Datamap({element: $('.datamap')[0],
+    scope: 'world',
     geographyConfig: {
         popupOnHover: false,
         hideAntarctica: false,
         highlightOnHover: false
+    },
+   /* projection: 'orthographic',*/
+    done: function() {
+        $('body').addClass('map');
+    },
+    projectionConfig: {
+        rotation: [97,-30]
     },
     responsive: true,
 

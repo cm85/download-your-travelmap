@@ -6,42 +6,43 @@ body {
 
 }
 
-* {
 
-    margin: 0;
-    padding: 0;
-}
 
-.datamap {
-
+.sixteen-nine {
     position: relative;
-
 }
-
+.sixteen-nine:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 56.25%;
+}
+.map .sixteen-nine:before {
+    display: none;
+}
+.sixteen-nine > .datamap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    right: 0;
+    bottom: 0;
+}
 .form {
     position: absolute;
-    left: 50%;
-    padding: 20px;
-    min-width: 300px;
     top: 50%;
+    left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+
+
+    min-width: 300px;
+
     border: 1px solid transparent;
     background: red;
-    /*
-    Nope =(
-    margin-left: -25%;
-    margin-top: -25%;
-    */
-
-    /*
-    Yep!
-    */
-    transform: translate(-50%, -50%);
-
-    /*
-    Not even necessary really.
-    e.g. Height could be left out!
-    */
+    margin: 0 auto;
     width: 40%;
+    max-width: 700px;
     transition: all 0.5s ease;
     z-index: 1;
 }
@@ -57,42 +58,37 @@ body {
     /* left: 0px; */
     border: 1px inset #333;
     top: 0;
-    font-size: .7em;
+    font-size: .3em;
     padding: 2px;
 }
 
 .fieldset {
-    display: table-row;
     border: none;
 }
 
-.url,
+.label {
+    overflow: hidden;
+    padding-right: .5em;
+    display: block;
+}
 .submit {
-    display: table-cell;
-    width: 79%;
+    float:right;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    font-size: 1.1em;
+    border-radius: 0;
+}
+
+.url {
+    border: 2px solid #000;
+    width:100%;
     padding: 10px 15px;
     font-size: 1.1em;
     border-radius: 0;
     box-sizing: border-box;
 }
 
-.url {
-    border: 2px solid #000;
-}
 
-.submit {
-    width: 21%;
-    background-color: #ffff00;
-    -webkit-appearance: none;
-    display: inline;
-
-    border-radius: 0;
-    /**
-     * If the input field has a border,
-     * you need it here too to achieve equal heights.
-     */
-    border: 2px inset black;
-}
 
 .submit::-moz-focus-inner {
     border: 1px;
