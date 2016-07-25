@@ -1,6 +1,5 @@
 /*global require, module, window, jQuery, document */
-var config = require('../config'),
-    data = require('json!../../../../data.json'),
+var data = require('json!../../../../data.json'),
     Datamap = require('datamaps');
 
 

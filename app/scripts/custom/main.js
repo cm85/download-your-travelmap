@@ -1,6 +1,5 @@
 /*global require, module, window, jQuery, document */
-var config = require('./config'),
-    $ = require('exports?jQuery!jquery'),
+var $ = require('jquery'),
     data = require('json!./../../../data.json'),
     Datamap = require('datamaps');
 
@@ -11,6 +10,9 @@ var datamap = new Datamap({element: $('.datamap')[0],
         popupOnHover: false,
         hideAntarctica: false,
         highlightOnHover: false
+    },
+    done: function() {
+        $('body').addClass('map');
     },
     responsive: true,
 
@@ -32,4 +34,13 @@ datamap.bubbles(data.data.places.map(function (el) {
 
     };
 
+
 }));
+
+$(document).ready(function () {
+    'use strict';
+    $('.submit').on('click touchend', function (e) {
+        $(this).closest('.form').addClass('off');
+        e.preventDefault();
+    });
+});
