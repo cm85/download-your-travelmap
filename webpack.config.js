@@ -29,6 +29,6 @@ module.exports = {
         }
     },
     output: {
-        filename: path.join(__dirname + '/build/scripts/app.js')
+        filename: path.join(__dirname + '/dist/app.js')
     }
 };

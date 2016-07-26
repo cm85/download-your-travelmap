@@ -24,38 +24,34 @@ var datamap = new Datamap({element: $('.datamap')[0],
     }});
 console.log(data.data.places[0]);
 
+datamap.addPlugin('pins', function ( layer, data ) {
+    // hold this in a closure
+    var self = this;
+// https://css-tricks.com/gooey-effect/
+    // a class you'll add to the DOM elements
+    var className = 'bigCircles';
+// http://bl.ocks.org/nbremer/8df57868090f11e59175804e2062b2aa
+    // make a D3 selection.
+    var bubbles = layer
+        .selectAll(className)
+        .data(data, JSON.stringify);
 
-datamap.addPlugin('pins', function(layer, data, options) {
-    var self = this,
-        fillData = this.options.fills,
-        svg = this.svg;
-
-
-    console.log(data);
-    var bubbles = layer.selectAll('image.datamaps-pins').data(data, JSON.stringify);
-// http://fiddle.jshell.net/duck0/kbqpfL1a/2/light/
-    bubbles.enter()
+    bubbles
+        .enter()
         .append('image')
-        .attr('class', 'datamaps-pinrrr')
         .attr('xlink:href', 'http://a.tiles.mapbox.com/v3/marker/pin-m+7e7e7e@2x.png')
+        .attr('class', className) //remember to set the class name
         .attr('height', 40)
         .attr('width', 40)
-        .attr('x', function(datum) {
-            var latLng = self.latLngToXY(datum.lat, datum.lng);
-            return latLng[0];
+        .attr('x', function (datum) {
+            return self.latLngToXY(datum.lat, datum.lng)[0]-20;
         })
-        .attr('y', function(datum) {
-            var latLng = self.latLngToXY(datum.lat, datum.lng);
-            return latLng[1];
-
-        });
-
-
-
-
+        .attr('y', function (datum) {
+            return self.latLngToXY(datum.lat, datum.lng)[1]-20;
+        })
+        .attr('r', 10);
 
 });
-
 datamap.pins(data.data.places);
 
 datamap.bubbles(data.data.places.map(function (el) {
@@ -83,4 +79,4 @@ $(document).ready(function () {
     });
 });
 
-console.log('xxx');
+console.log('...');
