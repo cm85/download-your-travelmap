@@ -21,9 +21,7 @@ module.exports = {
 
         moduleDirectories : [ '../../node_modules' ],
         alias: {
-
             jquery: 'jquery/dist/jquery',
-            d3: 'd3/d3',
             datamaps: 'datamaps/dist/datamaps.world.js',
             nprogress: 'nprogress/nprogress'
         }

@@ -9,7 +9,7 @@
   "devDependencies": {
     "aws-sdk": "^2.3.14",
     "connect": "^3.4.1",
-    "d3": "^3.5.17",
+    "d3": "^4.1.1",
     "datamaps": "^0.5.5",
     "del": "^2.2.0",
     "expose-loader": "^0.7.1",
