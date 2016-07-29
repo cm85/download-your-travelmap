@@ -24,7 +24,7 @@
     "noarg": true,
     "unused": true,
     "scripturl": true,
-    "nomen": false,
+    "nomen": true,
     "shadow": false,
     "supernew": false,
     "undef": true,

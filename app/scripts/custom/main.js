@@ -26,21 +26,19 @@ console.log(data.data.places[0]);
 datamap.addPlugin('pins', function (layer, data) {
     // hold this in a closure
     'use strict';
-    var self = this;
+    var self = this,
 // https://css-tricks.com/gooey-effect/
     // a class you'll add to the DOM elements
-    var className = 'bigCircles';
+
 // http://bl.ocks.org/nbremer/8df57868090f11e59175804e2062b2aa
     // make a D3 selection.
-    var bubbles = layer
-        .selectAll(className)
-        .data(data, JSON.stringify);
+
 
 
     //SVG filter for the gooey effect
     //Code taken from http://tympanus.net/codrops/2015/03/10/creative-gooey-effects/
-    var defs = layer.append('defs');
-    var filter = defs.append('filter').attr('id', 'gooeyCodeFilter');
+    defs = layer.append('defs'),
+    filter = defs.append('filter').attr('id', 'gooeyCodeFilter');
     filter.append('feGaussianBlur')
         .attr('in', 'SourceGraphic')
         .attr('stdDeviation', '10')
@@ -78,7 +76,7 @@ datamap.addPlugin('pins', function (layer, data) {
             .delay(function (d, i) {
                 return i * 20;
             })
-            .attr('r', function (d) {
+            .attr('r', function () {
                 return 5;
             })
             .attr('cx', function (datum) {

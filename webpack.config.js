@@ -1,7 +1,6 @@
 /*global module, __dirname, require */
 var path = require('path'),
     webpack = require('webpack');
-console.log(__dirname);
 module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
