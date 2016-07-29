@@ -8,18 +8,17 @@ module.exports = {
             jQuery: 'jquery'
 
 
-        }),
-        new webpack.optimize.UglifyJsPlugin({
+        })
+        /*new webpack.optimize.UglifyJsPlugin({
             sourceMap: false,
             mangle: false
-        })
+        })*/
     ],
 
 
     entry: './app/scripts/custom/main.js',
     resolve: {
 
-        moduleDirectories : [ '../../node_modules' ],
         alias: {
             jquery: 'jquery/dist/jquery',
             datamaps: 'datamaps/dist/datamaps.world.js',
